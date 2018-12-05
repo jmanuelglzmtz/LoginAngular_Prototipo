@@ -16,7 +16,14 @@ import { AlertService, AuthenticationService, UserService } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-
+import { BasicFormComponent } from './BasicForm';
+import { ElementsFormComponent } from './ElementsForm';
+import { HorizontalFormComponent } from './HorizontalForm';
+import { InLineFormComponent } from './InLineForm';
+import { ModalFormComponent } from './ModalForm';
+import { SideNavbarComponent } from './SideNavbar';
+import { MainNavbarComponent } from './MainNavbar';
+import { FooterBarComponent } from './FooterBar'
 @NgModule({
     imports: [
         BrowserModule,
@@ -29,7 +36,15 @@ import { RegisterComponent } from './register';
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        BasicFormComponent,
+        ElementsFormComponent,
+        HorizontalFormComponent,
+        InLineFormComponent,
+        ModalFormComponent,
+        SideNavbarComponent,
+        MainNavbarComponent,
+        FooterBarComponent
     ],
     providers: [
         AuthGuard,
