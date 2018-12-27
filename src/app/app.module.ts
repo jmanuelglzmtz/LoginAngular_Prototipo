@@ -12,18 +12,19 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService } from './_services';
+import { AlertService, AuthenticationService, UserService, RolService, } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { BasicFormComponent } from './BasicForm';
-import { ElementsFormComponent } from './ElementsForm';
-import { HorizontalFormComponent } from './HorizontalForm';
-import { InLineFormComponent } from './InLineForm';
-import { ModalFormComponent } from './ModalForm';
-import { SideNavbarComponent } from './SideNavbar';
-import { MainNavbarComponent } from './MainNavbar';
-import { FooterBarComponent } from './FooterBar'
+import { BasicFormComponent } from './Forms/BasicForm';
+import { ElementsFormComponent } from './Forms/ElementsForm';
+import { HorizontalFormComponent } from './Forms/HorizontalForm';
+import { InLineFormComponent } from './Forms/InLineForm';
+import { ModalFormComponent } from './Forms/ModalForm';
+import { SideNavbarComponent } from './Forms/SideNavbar';
+import { MainNavbarComponent } from './Forms/MainNavbar';
+import { FooterBarComponent } from './Forms/FooterBar'
+import { RoleRegisterComponent } from "./security/roleRegister";
 @NgModule({
     imports: [
         BrowserModule,
@@ -44,13 +45,15 @@ import { FooterBarComponent } from './FooterBar'
         ModalFormComponent,
         SideNavbarComponent,
         MainNavbarComponent,
-        FooterBarComponent
+        FooterBarComponent,
+        RoleRegisterComponent
     ],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
         UserService,
+        RolService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
