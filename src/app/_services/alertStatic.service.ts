@@ -3,14 +3,14 @@ import { Router, NavigationStart } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable()
-export class AlertService {
+export class AlertStaticService {
     private subject = new Subject<any>();
     private keepAfterNavigationChange = false;
 
     constructor(private router: Router) {
         // clear alert message on route change
         router.events.subscribe(event => {
-            if (event instanceof NavigationStart) {
+            if (event instanceof NavigationStart) {                
                 if (this.keepAfterNavigationChange) {
                     // only keep for a single location change
                     this.keepAfterNavigationChange = false;

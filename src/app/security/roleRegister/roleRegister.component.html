@@ -14,8 +14,7 @@
            <div class="container-fluid">
               <h2 class="no-margin-bottom">Registro de Roles</h2>
            </div>
-        </header>
-        
+        </header>        
         <!-- Forms Section-->
         <section class="forms">
            <div class="container-fluid">
@@ -27,64 +26,29 @@
                     <div class="table-responsive">                       
                         <table class="table table-striped">
                             <thead>
-                            <tr>                                
+                            <tr>                                    
                                 <th>Nombre</th>
                                 <th>Estatus</th>                                
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let rol of rols">                                
+                            <tr *ngFor="let rol of rols">
                                 <td>{{ rol.name }}</td>
-                                <td>{{ rol.estatus }}</td>                                
-                                <td><button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Editar</button></td>
+                                <td>{{ rol.estatus }}</td>
+                                <ngbd-modal-role [status]="rol.estatus" [name]="rol.name" [id]="rol.id"></ngbd-modal-role>
                             </tr>                                                     
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>              
-           </div>
-        </section>
-        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                <div role="document" class="modal-dialog">
-                   <div class="modal-content">
-                      <div class="modal-header">
-                         <h4 id="exampleModalLabel" class="modal-title">Editar Rol</h4>
-                         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                      </div>
-                      <div class="modal-body">                                               
-                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" placeholder="Nombre" class="form-control">
-                         </div>
-                        <div class="form-group row">
-                         <div >   
-                            <div class="col-sm-3">
-                                    <label></label>
-                            </div>    
-                            <div>
-                                <input id="optionsRadios1" type="radio" checked="" value="option1" name="optionsRadios">
-                                <label for="optionsRadios1">Activo</label>
-                            </div>   
-                            <div>                         
-                                <input id="optionsRadios2" type="radio" value="option2" name="optionsRadios">
-                                <label for="optionsRadios2">Desactivo</label>
-                            </div> 
-                         </div>   
-                        </div>                      
-                      </div>
-                      <div class="modal-footer">
-                         <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                         <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                      </div>
-                   </div>
-                </div>
-             </div>
-
+           </div>           
+        </section>        
         <!-- Page Footer-->
         <FooterBar #footerBar></FooterBar>
      </div>
   </div>
 </div>
+
 

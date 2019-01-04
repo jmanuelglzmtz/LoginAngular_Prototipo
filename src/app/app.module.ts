@@ -2,17 +2,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 // used to create fake backend
 //import { fakeBackendProvider } from './_helpers';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
-import { AlertComponent } from './_directives';
+import { AlertStaticComponent } from './_directives/AlertStatic';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService, RolService, } from './_services';
+import { AlertStaticService, AuthenticationService, UserService, RolService, } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -25,16 +26,19 @@ import { SideNavbarComponent } from './Forms/SideNavbar';
 import { MainNavbarComponent } from './Forms/MainNavbar';
 import { FooterBarComponent } from './Forms/FooterBar'
 import { RoleRegisterComponent } from "./security/roleRegister";
+import { ModalRoleComponent } from "./security/modalRole";
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
+        NgbModule,
+        routing,
+        FormsModule 
     ],
     declarations: [
         AppComponent,
-        AlertComponent,
+        AlertStaticComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
@@ -46,11 +50,12 @@ import { RoleRegisterComponent } from "./security/roleRegister";
         SideNavbarComponent,
         MainNavbarComponent,
         FooterBarComponent,
-        RoleRegisterComponent
+        RoleRegisterComponent,
+        ModalRoleComponent
     ],
     providers: [
         AuthGuard,
-        AlertService,
+        AlertStaticService,
         AuthenticationService,
         UserService,
         RolService,

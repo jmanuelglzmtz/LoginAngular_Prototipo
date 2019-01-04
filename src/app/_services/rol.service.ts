@@ -10,4 +10,8 @@ export class RolService {
     getAll() {
         return this.http.get<rol[]>(`${config.apiUrl}/roles`);
     }
+
+    update(rol: rol) {
+        return this.http.put(`${config.apiUrl}/roles/` + rol.id, rol);
+    }
 }
