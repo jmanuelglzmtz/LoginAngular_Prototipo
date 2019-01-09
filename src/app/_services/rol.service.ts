@@ -14,4 +14,12 @@ export class RolService {
     update(rol: rol) {
         return this.http.put(`${config.apiUrl}/roles/` + rol.id, rol);
     }
+
+    register(rol: rol) {
+        return this.http.post(`${config.apiUrl}/roles/register`, rol);
+    }
+
+    delete(id: string) {
+        return this.http.delete(`${config.apiUrl}/roles/` + id);
+    }
 }

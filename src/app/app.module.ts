@@ -1,9 +1,12 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ng6-toastr-notifications';
+
 // used to create fake backend
 //import { fakeBackendProvider } from './_helpers';
 
@@ -11,6 +14,7 @@ import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
 import { AlertStaticComponent } from './_directives/AlertStatic';
+import { AlertToastrComponent } from './_directives/AlertToastr';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertStaticService, AuthenticationService, UserService, RolService, } from './_services';
@@ -25,8 +29,10 @@ import { ModalFormComponent } from './Forms/ModalForm';
 import { SideNavbarComponent } from './Forms/SideNavbar';
 import { MainNavbarComponent } from './Forms/MainNavbar';
 import { FooterBarComponent } from './Forms/FooterBar'
-import { RoleRegisterComponent } from "./security/roleRegister";
-import { ModalRoleComponent } from "./security/modalRole";
+import { RoleRegisterComponent } from "./security/Role/roleRegister";
+import { ModalUpdateRoleComponent } from "./security/Role/modalUpdateRole";
+import { ModalCreateRoleComponent } from "./security/Role/modalCreateRole";
+import { ModalDeleteRoleComponent } from "./security/Role/modalDeleteRole";
 @NgModule({
     imports: [
         BrowserModule,
@@ -34,7 +40,9 @@ import { ModalRoleComponent } from "./security/modalRole";
         HttpClientModule,
         NgbModule,
         routing,
-        FormsModule 
+        FormsModule,
+        BrowserAnimationsModule, 
+        ToastrModule.forRoot() 
     ],
     declarations: [
         AppComponent,
@@ -51,10 +59,14 @@ import { ModalRoleComponent } from "./security/modalRole";
         MainNavbarComponent,
         FooterBarComponent,
         RoleRegisterComponent,
-        ModalRoleComponent
+        ModalUpdateRoleComponent,
+        ModalCreateRoleComponent,
+        ModalDeleteRoleComponent
+        ,AlertToastrComponent
     ],
     providers: [
         AuthGuard,
+        AlertToastrComponent,
         AlertStaticService,
         AuthenticationService,
         UserService,

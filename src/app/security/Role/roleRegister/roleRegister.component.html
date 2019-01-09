@@ -37,7 +37,13 @@
                                 <td>{{ rol.name }}</td>
                                 <td>{{ rol.estatus }}</td>
                                 <ngbd-modal-role [status]="rol.estatus" [name]="rol.name" [id]="rol.id"></ngbd-modal-role>
-                            </tr>                                                     
+                                <ngbd-modalDelete-role [id]="rol.id"></ngbd-modalDelete-role>
+                            </tr>  
+                            <tr>                                    
+                                    <td></td>
+                                    <td></td>                                                                    
+                                    <ngbd-modalRegister-role></ngbd-modalRegister-role>
+                                </tr>                                                   
                             </tbody>
                         </table>
                     </div>

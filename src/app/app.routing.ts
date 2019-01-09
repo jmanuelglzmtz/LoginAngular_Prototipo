@@ -3,7 +3,7 @@
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { RoleRegisterComponent } from './security/roleRegister'
+import { RoleRegisterComponent } from './security/Role/roleRegister'
 import { AuthGuard } from './_guards';
 
 const appRoutes: Routes = [
