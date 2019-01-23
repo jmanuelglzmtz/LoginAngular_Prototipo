@@ -4,6 +4,8 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { RoleRegisterComponent } from './security/Role/roleRegister'
+import { PermissionRegisterComponent } from './security/Permission/permissionRegister'
+import { ModuleRegisterComponent } from './security/Module/moduleRegister'
 import { AuthGuard } from './_guards';
 
 const appRoutes: Routes = [
@@ -11,6 +13,8 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'roleRegister', component: RoleRegisterComponent },
+    { path: 'permissionRegister', component: PermissionRegisterComponent },
+    { path: 'moduleRegister', component: ModuleRegisterComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }    

@@ -12,7 +12,7 @@
       <span class="heading">{{ rol.rolName }}</span>
       <ul class="list-unstyled">
          <li *ngFor="let module of rol.modules">
-            <a [routerLink]="['/roleRegister']"> <i class="{{module.iconName}}"></i>{{ module.moduleName }} </a>
+            <a [routerLink]="['/permissionRegister']"> <i class="{{module.iconName}}"></i>{{ module.moduleName }} </a>
          </li>
       </ul>
    </div>   

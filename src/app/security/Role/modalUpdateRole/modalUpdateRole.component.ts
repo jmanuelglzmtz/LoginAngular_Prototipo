@@ -43,7 +43,7 @@ export class ModalUpdateRoleComponent  implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
     name: ['', Validators.required],
-    estatus: ['', Validators.required],
+    status: ['', Validators.required],
     id: ['', Validators.required]      
     });
   }
@@ -86,7 +86,7 @@ export class ModalUpdateRoleComponent  implements OnInit {
       id: this.id
     });
     this.registerForm.patchValue({
-      estatus: this.statusResult
+      status: this.statusResult
     });    
     console.log(this.registerForm.value);
     

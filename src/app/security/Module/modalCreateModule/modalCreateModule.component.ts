@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RoleRegisterComponent } from '../roleRegister'
-import { AlertStaticService, RolService } from '../../../_services';
-//import { ToastrManager } from 'ng6-toastr-notifications';
+import { ModuleRegisterComponent } from '../moduleRegister'
+import { AlertStaticService, ModuleService } from '../../../_services';
+
 import { first } from 'rxjs/operators';
 import { AlertToastrComponent  } from "../../../_directives/AlertToastr";
 
 @Component({
-    selector: 'ngbd-modalRegister-role',
-    templateUrl: 'modalCreateRole.component.html',  
+    selector: 'ngbd-modalRegister-module',
+    templateUrl: 'modalCreateModule.component.html',  
     providers: [NgbModalConfig, NgbModal]
 })
 
-export class ModalCreateRoleComponent  implements OnInit {
+export class ModalCreateModuleComponent  implements OnInit {
   closeResult: string;
-  nameResult: string;
+  typeResult: string;
   statusResult: string;
   loading = false;
   registerForm: FormGroup;  
@@ -24,11 +24,11 @@ export class ModalCreateRoleComponent  implements OnInit {
   constructor(
       config: NgbModalConfig, 
       private modalService: NgbModal,
-      private rolService: RolService,
+      private moduleService: ModuleService,
       private alertStaticService: AlertStaticService,
       private formBuilder: FormBuilder,
       private router: Router,
-      private roleRegisterComponent:RoleRegisterComponent
+      private moduleRegisterComponent:ModuleRegisterComponent
       ,public alertToastrComponent: AlertToastrComponent
     ) {
     // customize default values of modals used by this component tree
@@ -40,7 +40,9 @@ export class ModalCreateRoleComponent  implements OnInit {
     this.registerForm = this.formBuilder.group({
     name: ['', Validators.required],
     status: ['', Validators.required],
-    id: ['', Validators.required]      
+    id: ['', Validators.required],      
+    icon: ['', Validators.required],
+    component: ['', Validators.required]            
     });
   }
 
@@ -68,15 +70,15 @@ export class ModalCreateRoleComponent  implements OnInit {
   private setRegister(){
     //aqui se actualiza
     
-    if(this.nameResult==null){
-      this.nameResult = "";
+    if(this.typeResult==null){
+      this.typeResult = "";
     }
     if(this.statusResult==null){
       this.statusResult = "";
     }
 
     this.registerForm.patchValue({
-      name: this.nameResult
+      type: this.typeResult
     });
     this.registerForm.patchValue({
       id: "00000000-0000-0000-0000-000000000000"
@@ -86,29 +88,28 @@ export class ModalCreateRoleComponent  implements OnInit {
     });    
     console.log(this.registerForm.value);
     
-    this.loading = true;    
-        this.rolService.register(this.registerForm.value)
+    this.loading = true; 
+ 
+        this.moduleService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 () => {
-                    //this.alertStaticService.success('Edición Correcta', true); 
-                    
-                    //this.toastr.successToastr('This is success toast.', 'Success!');
                     
                     this.alertToastrComponent.showSuccess('Creacion Correcta','Mensaje',true);
                                         
-                    this.roleRegisterComponent.ngOnInit();
-                    this.router.navigate(['/roleRegister']);                            
+                    this.moduleRegisterComponent.ngOnInit();
+
+                    this.router.navigate(['/moduleRegister']);                            
                 },
                 error => {
                     this.alertStaticService.error(error);
                     this.loading = false;
                 });
-                
+
   }
 
   onKey(event: any) {
-    this.nameResult = event.target.value;    
+    this.typeResult = event.target.value;    
   }
 
   FieldsChange(values:any){    

@@ -1,0 +1,76 @@
+<!--
+ <div class="container-fluid">
+<div class="card">
+<div class="card-header d-flex align-items-center">
+<h3 class="h4">Permisos Registrados</h3>
+</div>
+<div class="card-body"> 
+<input type="file" (change)="uploadIcon()" name="file" #fileInput> 
+</div>
+</div>
+ </div> 
+-->
+<div class="page">
+
+<!-- Main Navbar-->
+<MainNavbar #mainNavbar></MainNavbar>
+
+
+<div class="page-content d-flex align-items-stretch">
+ <!-- Side Navbar --> 
+ <SideNavbar #sideNavbar ></SideNavbar> 
+
+ <div class="content-inner">
+<!-- Page Header-->
+<header class="page-header">
+ <div class="container-fluid">
+<h2 class="no-margin-bottom">Registro de Módulos</h2>
+ </div>
+</header>
+<!-- Forms Section-->
+<section class="forms">
+ <div class="container-fluid">
+<div class="card">
+<div class="card-header d-flex align-items-center">
+<h3 class="h4">Módulos Registrados</h3>
+</div>
+<div class="card-body">
+<div class="table-responsive"> 
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Componente</th>
+<th>Estatus</th>
+<th>Icon</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let module of modules">
+<td>{{ module.name }}</td>
+<td>{{ module.component }}</td>
+<td>{{ module.status }}</td>
+<td><i class="{{ module.icon }}"></i></td>
+<ngbd-modal-module [status]="module.estatus" [name]="module.name" [id]="module.id"></ngbd-modal-module>
+<ngbd-modalDelete-module [id]="module.id"></ngbd-modalDelete-module>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<ngbd-modalRegister-module></ngbd-modalRegister-module>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+ </div> 
+</section>
+<!-- Page Footer-->
+<FooterBar #footerBar></FooterBar>
+ </div>
+</div>
+</div>

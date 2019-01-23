@@ -12,7 +12,7 @@
         <!-- Page Header-->
         <header class="page-header">
            <div class="container-fluid">
-              <h2 class="no-margin-bottom">Registro de Roles</h2>
+              <h2 class="no-margin-bottom">Registro de Permisos</h2>
            </div>
         </header>        
         <!-- Forms Section-->
@@ -20,30 +20,30 @@
            <div class="container-fluid">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h3 class="h4">Roles Registrados</h3>
+                    <h3 class="h4">Permisos Registrados</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">                       
                         <table class="table table-striped">
                             <thead>
                             <tr>                                    
-                                <th>Nombre</th>
+                                <th>Type</th>
                                 <th>Estatus</th>                                
                                 <th></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr *ngFor="let rol of rols">
-                                <td>{{ rol.name }}</td>
-                                <td>{{ rol.status }}</td>
-                                <ngbd-modal-role [status]="rol.status" [name]="rol.name" [id]="rol.id"></ngbd-modal-role>
-                                <ngbd-modalDelete-role [id]="rol.id"></ngbd-modalDelete-role>
-                            </tr>  
-                            <tr>                                    
-                                    <td></td>
-                                    <td></td>                                                                    
-                                    <ngbd-modalRegister-role></ngbd-modalRegister-role>
-                                </tr>                                                   
+                            <tbody>                            
+                                <tr *ngFor="let permission of permissions">
+                                    <td>{{ permission.type }}</td>
+                                    <td>{{ permission.status }}</td>
+                                    <ngbd-modal-permission [status]="permission.status" [name]="permission.type" [id]="permission.id"></ngbd-modal-permission>
+                                    <ngbd-modalDelete-permission [id]="permission.id"></ngbd-modalDelete-permission>
+                                </tr>  
+                                <tr>                                    
+                                        <td></td>
+                                        <td></td>                                                                    
+                                        <ngbd-modalRegister-permission></ngbd-modalRegister-permission>
+                                </tr>                                                  
                             </tbody>
                         </table>
                     </div>

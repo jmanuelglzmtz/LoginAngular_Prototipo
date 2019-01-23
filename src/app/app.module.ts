@@ -17,7 +17,9 @@ import { AlertStaticComponent } from './_directives/AlertStatic';
 import { AlertToastrComponent } from './_directives/AlertToastr';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertStaticService, AuthenticationService, UserService, RolService, } from './_services';
+
+import { AlertStaticService, AuthenticationService, UserService, RolService, PermissionService, ModuleService, FileService } from './_services';
+
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -29,10 +31,22 @@ import { ModalFormComponent } from './Forms/ModalForm';
 import { SideNavbarComponent } from './Forms/SideNavbar';
 import { MainNavbarComponent } from './Forms/MainNavbar';
 import { FooterBarComponent } from './Forms/FooterBar'
+
 import { RoleRegisterComponent } from "./security/Role/roleRegister";
 import { ModalUpdateRoleComponent } from "./security/Role/modalUpdateRole";
 import { ModalCreateRoleComponent } from "./security/Role/modalCreateRole";
 import { ModalDeleteRoleComponent } from "./security/Role/modalDeleteRole";
+
+import { PermissionRegisterComponent } from "./security/Permission/permissionRegister";
+import { ModalUpdatePermissionComponent } from "./security/Permission/modalUpdatePermission";
+import { ModalCreatePermissionComponent } from "./security/Permission/modalCreatePermission";
+import { ModalDeletePermissionComponent } from "./security/Permission/modalDeletePermission";
+
+import { ModuleRegisterComponent } from "./security/Module/moduleRegister";
+import { ModalUpdateModuleComponent } from "./security/Module/modalUpdateModule";
+import { ModalCreateModuleComponent } from "./security/Module/modalCreateModule";
+import { ModalDeleteModuleComponent } from "./security/Module/modalDeleteModule";
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -61,8 +75,19 @@ import { ModalDeleteRoleComponent } from "./security/Role/modalDeleteRole";
         RoleRegisterComponent,
         ModalUpdateRoleComponent,
         ModalCreateRoleComponent,
-        ModalDeleteRoleComponent
-        ,AlertToastrComponent
+        ModalDeleteRoleComponent,
+        
+        PermissionRegisterComponent,
+        ModalUpdatePermissionComponent,
+        ModalCreatePermissionComponent,
+        ModalDeletePermissionComponent,
+
+        ModuleRegisterComponent,
+        ModalUpdateModuleComponent,
+        ModalCreateModuleComponent,
+        ModalDeleteModuleComponent,
+
+        AlertToastrComponent
     ],
     providers: [
         AuthGuard,
@@ -71,6 +96,9 @@ import { ModalDeleteRoleComponent } from "./security/Role/modalDeleteRole";
         AuthenticationService,
         UserService,
         RolService,
+        PermissionService,
+        ModuleService,
+        FileService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
